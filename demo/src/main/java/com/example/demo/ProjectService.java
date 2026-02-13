@@ -1,12 +1,24 @@
 package com.example.demo;
 
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class ProjectService {
+    @Autowired
+    private ProjectRepository projectRepository;
+    public List<Project> getAllProjectsFromDB() {
+        return projectRepository.findAll(); 
+    }
+    public void addProject(Project project) {
+        projectRepository.save(project);
+    }
+    public void deleteProject(int id){
+        projectRepository.deleteById(id);
+    }
     public List<Project> getAllProjects(){
         return List.of(
                 new Project(1, "ATM System", "Java based ATM"),

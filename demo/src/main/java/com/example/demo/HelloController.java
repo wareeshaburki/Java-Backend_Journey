@@ -1,12 +1,14 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-//Ye line Spring Boot ki library se GetMapping ka tool utha kar la rahi hai,
-// takay aap bata sakein ke kis URL par kya kaam hona hai.
-//Ye line RestController ka tool la rahi hai,
-// jo aapki normal Java class ko ek "Web Server" ki class mein badal deti hai.
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
@@ -45,7 +47,7 @@ public class HelloController {
 
     @PostMapping("/add-project-to-list")
     public String addProjectToList(@RequestBody Project newProject){
-        projectService.projectsList.add(newProject);
+        projectService.addProject(newProject);
         System.out.println("Project Received: " + newProject.getTitle());
         return "Success! Project " + newProject.getTitle() + " has been received and added to list";
     }
@@ -57,6 +59,7 @@ public class HelloController {
 
     @DeleteMapping("/delete-project/{id}")
     public String deleteProject(@PathVariable int id){
+        projectService.deleteProject(id);
         return "Project with " + id + " has been deleted";
     }
 

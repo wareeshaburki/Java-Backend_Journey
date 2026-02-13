@@ -4,38 +4,43 @@ Welcome to my Java Full-Stack development journey. This repository tracks my pro
 
 ---
 
-## 📅 Phase 1: Spring Boot Core (February)
+## 📅 Progress Log
 
 ### Day 1: REST API Foundations (Feb 12, 2026)
-Today, I successfully set up the Spring Boot environment and built my first set of REST endpoints.
+Built the initial architecture using the Controller-Service pattern.
+- **REST Controllers:** Created `@RestController` with `@GetMapping`, `@PostMapping`, and `@DeleteMapping`.
+- **Dependency Injection:** Used `@Service` and `@Autowired`.
+- **In-Memory Storage:** Managed projects using `ArrayList`.
 
-#### ✅ Tasks Completed:
-- **Environment Setup:** Configured IntelliJ IDEA with JDK 17 and Maven.
-- **Spring Initializr:** Generated a project with `Spring Web` dependency.
-- **REST Controllers:** Created `@RestController` with multiple `@GetMapping` endpoints.
-- **Data Handling:** Implemented Java Models (`User`, `Project`) to return JSON data.
-- **Service Layer:** Implemented the **Service Pattern** using `@Service` and `@Autowired` for Dependency Injection.
-- **In-Memory Storage:** Used `ArrayList` to manage a list of projects dynamically.
-- **CRUD Operations:**
-    - `GET /projects-list`: Fetch all projects.
-    - `POST /add-project-to-list`: Add a new project via Postman (JSON).
-    - `DELETE /delete-project/{id}`: Practice with `@PathVariable`.
-
-#### 🛠️ Tools Used:
-- **Java 17**
-- **Spring Boot 3.x**
-- **Postman** (For API Testing)
-- **Git/GitHub**
+### Day 2: Database Persistence & JPA (Feb 13, 2026)
+Moved from volatile memory to persistent storage.
+- **Database Integration:** Integrated **H2 In-Memory Database**.
+- **Spring Data JPA:** Implemented `JpaRepository` interface for automated CRUD logic.
+- **ORM Mapping:** Converted Java POJOs into Database Entities using `@Entity`.
+- **Automatic ID Generation:** Configured `@GeneratedValue(strategy = GenerationType.IDENTITY)`.
 
 ---
 
-## 🛠 How to Run
-1. Clone the repository.
-2. Open the `demo` folder in IntelliJ IDEA.
-3. Run the `DemoApplication.java` file.
-4. Access the API at `http://localhost:8080/hello`.
+## 🛠️ Tech Stack
+- **Language:** Java 17
+- **Framework:** Spring Boot 3.x
+- **ORM:** Spring Data JPA (Hibernate)
+- **Database:** H2 (In-memory)
+- **API Testing:** Postman
+
+---
+
+## 🚀 How to Run & Explore
+1. **Clone the repository.**
+2. **Open in IntelliJ IDEA** and let Maven download dependencies.
+3. **Run `DemoApplication.java`.**
+4. **Test APIs:** Use Postman to hit `http://localhost:8080/projects-list`.
+5. **View Database:** Access the H2 Console at `http://localhost:8080/h2-console` 
+   - **JDBC URL:** `jdbc:h2:mem:testdb`
+   - **User:** `sa` | **Password:** (blank)
 
 ---
 
 ## 📈 Next Milestone
-- **Spring Data JPA & H2 Database:** Moving from temporary `ArrayList` to persistent database storage.
+- **Exception Handling:** Adding `@ControllerAdvice` for professional error responses.
+- **MySQL Integration:** Moving from H2 to a permanent MySQL disk-based database.
