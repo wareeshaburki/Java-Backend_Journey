@@ -19,6 +19,13 @@ Moved from volatile memory to persistent storage.
 - **ORM Mapping:** Converted Java POJOs into Database Entities using `@Entity`.
 - **Automatic ID Generation:** Configured `@GeneratedValue(strategy = GenerationType.IDENTITY)`.
 
+### Day 3: Exception Handling & Validation (Feb 14, 2026)
+Focused on making the API robust and production-grade.
+- **Custom Exceptions:** Developed `ResourceNotFoundException` for precise 404 error reporting.
+- **Jakarta Bean Validation:** Applied `@NotBlank` and `@Size` constraints to the Project model to ensure data quality.
+- **Global Error Management:** Implemented `@ControllerAdvice` to handle exceptions globally and provide standardized JSON error responses.
+- **Postman Testing:** Verified 400 Bad Request and 404 Not Found scenarios.
+
 ---
 
 ## 🛠️ Tech Stack
