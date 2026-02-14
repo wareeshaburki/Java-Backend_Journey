@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
+import com.example.demo.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,14 @@ public class TaskService {
 
     public List<Task> getPendingTasks(){
         return taskRepository.findByIsCompletedFalse();
+    }
+
+    public Task getTaskWithId(int id){
+        return taskRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Task not found!"));
+    }
+
+    public void deleteTask(int id){
+        Task task = taskRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Task not found with id " + id + "!"));
+        taskRepository.delete(task);
     }
 }

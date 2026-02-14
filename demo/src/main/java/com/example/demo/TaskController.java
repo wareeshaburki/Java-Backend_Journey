@@ -1,10 +1,8 @@
 package com.example.demo;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,13 +13,18 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/save-task")
-    public String saveTask(@RequestBody Task task){
+    public String saveTask(@Valid @RequestBody Task task) {
         taskService.saveTask(task);
         return "Task " + task.getTaskName() + " has been saved";
     }
 
+    @GetMapping("/get-task-by-id/{id}")
+    public Task getTaskById(@PathVariable int id) {
+        return taskService.getTaskWithId(id);
+    }
+
     @GetMapping("/get-pending-tasks")
-    public List<Task> getPendingTasks(){
+    public List<Task> getPendingTasks() {
         return taskService.getPendingTasks();
     }
 }
