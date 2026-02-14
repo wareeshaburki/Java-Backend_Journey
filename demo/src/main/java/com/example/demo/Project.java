@@ -3,12 +3,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity // This tells JPA to create a table named "Project"
 public class Project {
     @Id // Marks this as the Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increments ID
     private int id;
+    @NotBlank(message = "Title is mandatory")
+    @Size(min = 2,message = "Title must have at-least 2 characters")
     private String title;
     private String description;
 

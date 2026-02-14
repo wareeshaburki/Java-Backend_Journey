@@ -2,6 +2,8 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.demo.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,11 @@ public class ProjectService {
         projectRepository.save(project);
     }
     public void deleteProject(int id){
-        projectRepository.deleteById(id);
+        Project project = projectRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Id " + id + " not found!"));
+        projectRepository.delete(project);
+    }
+    public Project getProjectById(int id){
+        return projectRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Project not found with id : " + id + "!"));
     }
     public List<Project> getAllProjects(){
         return List.of(

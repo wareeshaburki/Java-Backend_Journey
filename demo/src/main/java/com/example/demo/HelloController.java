@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import java.util.List;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +47,7 @@ public class HelloController {
     }
 
     @PostMapping("/add-project-to-list")
-    public String addProjectToList(@RequestBody Project newProject){
+    public String addProjectToList(@Valid @RequestBody Project newProject){
         projectService.addProject(newProject);
         System.out.println("Project Received: " + newProject.getTitle());
         return "Success! Project " + newProject.getTitle() + " has been received and added to list";
@@ -53,7 +55,7 @@ public class HelloController {
 
     @GetMapping("/getAddedList")
     public List<Project> getProjectList(){
-        return projectService.getProjects();
+        return projectService.getAllProjectsFromDB();
     }
 
     @DeleteMapping("/delete-project/{id}")
@@ -65,5 +67,10 @@ public class HelloController {
     @GetMapping("/greet/{name}")
     public String greetName(@PathVariable String name){
         return "Hello " + name + "!Welcome to the backend.";
+    }
+
+    @GetMapping("/get-project-by-id/{id}")
+    public Project getProjectById(@PathVariable int id){
+        return projectService.getProjectById(id);
     }
 }
