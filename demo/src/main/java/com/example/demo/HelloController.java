@@ -53,6 +53,11 @@ public class HelloController {
         return "Success! Project " + newProject.getTitle() + " has been received and added to list";
     }
 
+    @GetMapping("/get-project-by-title/{title}")
+    public List<Project> getProjectByTitle(@PathVariable String title){
+        return projectService.getProjectByTitle(title);
+    }
+
     @GetMapping("/getAddedList")
     public List<Project> getProjectList(){
         return projectService.getAllProjectsFromDB();

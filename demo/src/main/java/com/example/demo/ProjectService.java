@@ -24,6 +24,9 @@ public class ProjectService {
     public Project getProjectById(int id){
         return projectRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Project not found with id : " + id + "!"));
     }
+    public List<Project> getProjectByTitle(String title){
+        return projectRepository.findByTitle(title);
+    }
     public List<Project> getAllProjects(){
         return List.of(
                 new Project(1, "ATM System", "Java based ATM"),

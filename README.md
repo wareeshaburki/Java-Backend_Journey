@@ -26,6 +26,13 @@ Focused on making the API robust and production-grade.
 - **Global Error Management:** Implemented `@ControllerAdvice` to handle exceptions globally and provide standardized JSON error responses.
 - **Postman Testing:** Verified 400 Bad Request and 404 Not Found scenarios.
 
+### Day 4: MySQL Integration & Data Persistence (Feb 15, 2026)
+Moved from in-memory storage to a persistent relational database.
+- **MySQL Integration:** Configured `application.properties` to connect the Spring Boot application with a local MySQL instance.
+- **Automated Schema Generation:** Leveraged Hibernate's `ddl-auto: update` to automatically synchronize Java entities with MySQL tables.
+- **Custom Query Methods:** Implemented derived query methods in the Repository layer (e.g., `findByTitle`) to fetch specific data without writing manual SQL.
+- **Persistence Verification:** Confirmed that data remains intact in MySQL Workbench even after application restarts.
+
 ---
 
 ## 🛠️ Tech Stack
