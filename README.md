@@ -14,7 +14,6 @@ Built the initial architecture using the Controller-Service pattern.
 
 ### Day 2: Database Persistence & JPA (Feb 13, 2026)
 Moved from volatile memory to persistent storage.
-- **Database Integration:** Integrated **H2 In-Memory Database**.
 - **Spring Data JPA:** Implemented `JpaRepository` interface for automated CRUD logic.
 - **ORM Mapping:** Converted Java POJOs into Database Entities using `@Entity`.
 - **Automatic ID Generation:** Configured `@GeneratedValue(strategy = GenerationType.IDENTITY)`.
@@ -22,16 +21,20 @@ Moved from volatile memory to persistent storage.
 ### Day 3: Exception Handling & Validation (Feb 14, 2026)
 Focused on making the API robust and production-grade.
 - **Custom Exceptions:** Developed `ResourceNotFoundException` for precise 404 error reporting.
-- **Jakarta Bean Validation:** Applied `@NotBlank` and `@Size` constraints to the Project model to ensure data quality.
-- **Global Error Management:** Implemented `@ControllerAdvice` to handle exceptions globally and provide standardized JSON error responses.
-- **Postman Testing:** Verified 400 Bad Request and 404 Not Found scenarios.
+- **Jakarta Bean Validation:** Applied `@NotBlank` and `@Size` constraints to the Project model.
+- **Global Error Management:** Implemented `@ControllerAdvice` to handle exceptions globally.
 
 ### Day 4: MySQL Integration & Data Persistence (Feb 15, 2026)
-Moved from in-memory storage to a persistent relational database.
-- **MySQL Integration:** Configured `application.properties` to connect the Spring Boot application with a local MySQL instance.
-- **Automated Schema Generation:** Leveraged Hibernate's `ddl-auto: update` to automatically synchronize Java entities with MySQL tables.
-- **Custom Query Methods:** Implemented derived query methods in the Repository layer (e.g., `findByTitle`) to fetch specific data without writing manual SQL.
-- **Persistence Verification:** Confirmed that data remains intact in MySQL Workbench even after application restarts.
+Transitioned from in-memory storage to a permanent relational database.
+- **MySQL Integration:** Configured `application.properties` for local MySQL instance connection.
+- **Automated Schema Generation:** Leveraged Hibernate's `ddl-auto: update` for automatic synchronization.
+- **Derived Query Methods:** Implemented custom repository methods like `findByTitle()` without manual SQL.
+
+### Day 5: API Documentation with Swagger/OpenAPI (Feb 15, 2026)
+Enhanced project transparency by implementing professional, interactive API documentation.
+- **Swagger UI Integration:** Successfully integrated `springdoc-openapi` for a real-time API console.
+- **Debugging & Resolution:** Resolved a `NoSuchMethodError` by aligning library versions between Spring Boot 3.4 and OpenAPI 2.8.4.
+- **Operation Summaries:** Added `@Operation` annotations to document endpoint functionality clearly.
 
 ---
 
@@ -39,21 +42,23 @@ Moved from in-memory storage to a persistent relational database.
 - **Language:** Java 17
 - **Framework:** Spring Boot 3.x
 - **ORM:** Spring Data JPA (Hibernate)
-- **Database:** H2 (In-memory)
+- **Database:** MySQL (Production), H2 (Testing)
+- **Documentation:** Swagger UI / OpenAPI 3
 - **API Testing:** Postman
 
 ---
 
 ## 🚀 How to Run & Explore
 1. **Clone the repository.**
-2. **Open in IntelliJ IDEA** and let Maven download dependencies.
-3. **Run `DemoApplication.java`.**
-4. **Test APIs:** Use Postman to hit `http://localhost:8080/projects-list`.
-5. **View Database:** Access the H2 Console at `http://localhost:8080/h2-console` 
-   - **JDBC URL:** `jdbc:h2:mem:testdb`
-   - **User:** `sa` | **Password:** (blank)
+2. **Database Setup:** - Ensure MySQL is running.
+   - Create a schema named `portfolio_db`.
+   - Update `src/main/resources/application.properties` with your MySQL `username` and `password`.
+3. **Open in IntelliJ IDEA** and let Maven download dependencies.
+4. **Run `DemoApplication.java`.**
+5. **Interactive API Docs (No Postman required!):** - Open your browser and visit: `http://localhost:8080/swagger-ui/index.html`
+   - You can test all endpoints (GET, POST, DELETE) directly from this UI.
 
 ---
 
 ## 📈 Next Milestone
-API Documentation with Swagger to make my backend "Client-Ready!"
+**DTO Refactoring & Service-Level Mapping:** Decoupling the Database Entities from the API layer to enhance security and scalability.

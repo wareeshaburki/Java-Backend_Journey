@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
+    @Operation(summary = "A Welcome to Wareesha")
     @GetMapping("/hello")
     public String hello(){
         return "Hey Wareesha! Your first Spring Boot API is working.";
     }
+    @Operation(summary = "Wareesha's info",description = "Wareesha's name,city and role")
     @GetMapping("/info")
     public String info(){
         return "I am Wareesha Burki from Lahore. I am a backend Focused Dev";
