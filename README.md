@@ -56,5 +56,4 @@ Moved from in-memory storage to a persistent relational database.
 ---
 
 ## 📈 Next Milestone
-- **Exception Handling:** Adding `@ControllerAdvice` for professional error responses.
-- **MySQL Integration:** Moving from H2 to a permanent MySQL disk-based database.
+API Documentation with Swagger to make my backend "Client-Ready!"
