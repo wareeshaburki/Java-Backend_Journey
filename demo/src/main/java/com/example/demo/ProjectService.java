@@ -2,10 +2,14 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.example.demo.dtos.ProjectDTO;
 import com.example.demo.exceptions.ResourceNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 @Service
 public class ProjectService {
@@ -39,5 +43,36 @@ public class ProjectService {
 
     public List<Project> getProjects(){
         return projectsList;
+    }
+
+//    public List<ProjectDTO> getAllProjectsAsDto() {
+//        List<Project> projects = projectRepository.findAll();
+//        List<ProjectDTO> projectDTOS = new ArrayList<>();
+//        for(Project p:projects){
+//            ProjectDTO projectDTO = new ProjectDTO();
+//            projectDTO.setTitle(p.getTitle());
+//            projectDTO.setDescription(p.getDescription());
+//            projectDTOS.add(projectDTO);
+//        }
+//        return projectDTOS;
+//    }
+
+
+//    public List<ProjectDTO> getAllProjectsAsDto(){
+//        return projectRepository.findAll().stream().map(
+//                project -> {
+//                    ProjectDTO projectDTO = new ProjectDTO();
+//                    projectDTO.setTitle(project.getTitle());
+//                    projectDTO.setDescription(project.getDescription());
+//                    return projectDTO;
+//                }
+//        ).collect(Collectors.toList());
+//    }
+
+    @Autowired
+    public ModelMapper modelMapper;
+    public List<ProjectDTO> getAllProjectsAsDto(){
+        return projectRepository.findAll().stream().map(project -> modelMapper.map(project,ProjectDTO.class))
+                .collect(Collectors.toList());
     }
 }

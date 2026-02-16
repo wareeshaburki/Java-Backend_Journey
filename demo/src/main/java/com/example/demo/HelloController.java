@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
+import com.example.demo.dtos.ProjectDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,9 @@ public class HelloController {
     @Autowired
     private ProjectService projectService;
 
-    @GetMapping("/health")
-    public List<Project> getProjects(){
-        return projectService.getAllProjects();
+    @GetMapping("/get_projects")
+    public List<ProjectDTO> getProjects(){
+        return projectService.getAllProjectsAsDto();
     }
 
     @PostMapping("/add-project")
