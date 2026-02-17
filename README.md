@@ -1,4 +1,4 @@
-# 🚀 Java Backend Journey 
+# 🚀 Java Backend Journey
 
 Welcome to my Java Full-Stack development journey. This repository tracks my progress from basics to enterprise-grade microservices, targeting a high-end backend role by August 2026.
 
@@ -40,16 +40,23 @@ Enhanced project transparency by implementing professional, interactive API docu
 Refactored architecture to decouple the Database Layer from the API Layer.
 - **DTO Implementation:** Created Data Transfer Objects (DTOs) to prevent leaking sensitive database structures.
 - **Java Streams & Lambda:** Utilized `.stream()` and `.map()` for modern, functional data transformation.
-- **ModelMapper Automation:** Integrated the `ModelMapper` library to automate Entity-to-DTO conversion, reducing boilerplate code.
+- **ModelMapper Automation:** Integrated the `ModelMapper` library to automate Entity-to-DTO conversion.
+
+### Day 7: Spring Security & API Locking (Feb 17, 2026)
+Implemented a robust security layer to protect sensitive data and management endpoints.
+- **Basic Authentication:** Integrated Spring Security to protect POST and DELETE operations while keeping GET requests public.
+- **Security Filter Chain:** Custom-configured the `SecurityFilterChain` bean to handle URL-based authorization.
+- **Swagger Security Integration:** Enhanced OpenAPI definitions with `SecurityScheme`, enabling "Padlock" icons and authorization headers directly within the Swagger UI.
 
 ---
 
 ## 🛠️ Tech Stack
 - **Language:** Java 17
 - **Framework:** Spring Boot 3.x
+- **Security:** Spring Security (Basic Auth)
 - **ORM:** Spring Data JPA (Hibernate)
 - **Database:** MySQL (Production), H2 (Testing)
-- **Library:** ModelMapper (Data Mapping)
+- **Mapping:** ModelMapper
 - **Documentation:** Swagger UI / OpenAPI 3
 - **API Testing:** Postman
 
@@ -63,9 +70,9 @@ Refactored architecture to decouple the Database Layer from the API Layer.
 4. **Run `DemoApplication.java`.**
 5. **Interactive API Docs:**
    - Open: `http://localhost:8080/swagger-ui/index.html`
-   - Test all endpoints (GET, POST, DELETE) directly from the browser.
+   - Use the **Authorize** button (Credentials: `admin` / `wareesha123`) to test protected endpoints.
 
 ---
 
 ## 📈 Next Milestone
-**Spring Security & JWT Authentication:** Implementing a secure login system and protecting API endpoints to ensure only authorized users can modify data.
+**Database-Backed Security & JWT:** Moving users from properties files to a MySQL database and implementing JSON Web Tokens (JWT) for stateless, modern authentication.

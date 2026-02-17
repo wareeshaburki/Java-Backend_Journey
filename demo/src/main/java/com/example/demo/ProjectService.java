@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.demo.dtos.ProjectDTO;
-import com.example.demo.exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
+
+import com.example.demo.dtos.ProjectDTO;
+import com.example.demo.exceptions.ResourceNotFoundException;
 
 @Service
 public class ProjectService {
