@@ -10,6 +10,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -20,6 +22,7 @@ public class SecurityConfig {
         httpSecurity.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.
                 requestMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll()
                 .requestMatchers(HttpMethod.GET,"/**").permitAll()
+                .requestMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated()).httpBasic(Customizer.withDefaults());
         return httpSecurity.build();
     }
@@ -29,5 +32,10 @@ public class SecurityConfig {
         return new OpenAPI().addSecurityItem(new SecurityRequirement().addList("basicScheme"))
                 .components(new Components().addSecuritySchemes("basicScheme",new SecurityScheme()
                         .type(SecurityScheme.Type.HTTP).scheme("basic")));
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }
